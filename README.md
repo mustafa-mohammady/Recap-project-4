@@ -13,7 +13,7 @@ Users can add new color theme, edit and delete them. They can also copy the colo
 
 ## API
 
-For issue `#7: Fetch API to Check If Contrast Is Okay`, you will be using [are my colors accessible api](https://www.aremycolorsaccessible.com/api-page).
+For issue `#7: Fetch API to Check If Contrast Is Okay`, you will be using [are my colors accessible api](https://aremycolorsaccessible.com/api-page).
 
 ```bash
 https://www.aremycolorsaccessible.com/api-page
