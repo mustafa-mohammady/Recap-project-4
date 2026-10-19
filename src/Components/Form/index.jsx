@@ -1,17 +1,17 @@
 import { useState } from "react";
 
-export default function Index() {
+export default function Index({ onAddColor }) {
   const [formData, setFormData] = useState({
     role: "Primary Color",
-    color: "#ffffff",
-    contrast: "#dddddd",
+    hex: "#ffffff",
+    contrastText: "#dddddd",
   });
 
   function handleForm(e) {
     e.preventDefault();
     const form = new FormData(e.target);
     const form_values = Object.fromEntries(form);
-    console.log(form_values);
+    onAddColor(form_values);
   }
 
   return (
@@ -37,20 +37,20 @@ export default function Index() {
             <div className="input-group">
               <input
                 type="text"
-                name="hexa"
-                id="hexa"
-                value={formData.color}
+                name="hex"
+                id="hex"
+                value={formData.hex}
                 onChange={(e) =>
-                  setFormData({ ...formData, color: e.target.value })
+                  setFormData({ ...formData, hex: e.target.value })
                 }
               />
               <input
                 type="color"
                 name="hexa-color"
                 id="hexa-color"
-                value={formData.color}
+                value={formData.hex}
                 onChange={(e) =>
-                  setFormData({ ...formData, color: e.target.value })
+                  setFormData({ ...formData, hex: e.target.value })
                 }
                 style={{ width: "30%" }}
               />
@@ -63,20 +63,20 @@ export default function Index() {
             <div className="input-group">
               <input
                 type="text"
-                name="contract_text"
-                id="contract_text"
-                value={formData.contrast}
+                name="contrastText"
+                id="contrastText"
+                value={formData.contrastText}
                 onChange={(e) =>
-                  setFormData({ ...formData, contrast: e.target.value })
+                  setFormData({ ...formData, contrastText: e.target.value })
                 }
               />
               <input
                 type="color"
                 name="text-color"
                 id="text_color"
-                value={formData.contrast}
+                value={formData.contrastText}
                 onChange={(e) =>
-                  setFormData({ ...formData, contrast: e.target.value })
+                  setFormData({ ...formData, contrastText: e.target.value })
                 }
                 style={{ width: "30%" }}
               />
