@@ -1,4 +1,4 @@
-# 5: Fetch API for Contrast Check
+# 7: Fetch API for Contrast Check
 
 ## Value Proposition
 
