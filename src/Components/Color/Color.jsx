@@ -1,6 +1,13 @@
 import "./Color.css";
 
-export default function Color({ role, hex, contrastText, onDeleteColor, id }) {
+export default function Color({
+  role,
+  hex,
+  contrastText,
+  onShowConfirmation,
+  id,
+  children,
+}) {
   return (
     <div
       className="card"
@@ -11,9 +18,10 @@ export default function Color({ role, hex, contrastText, onDeleteColor, id }) {
       <p>Contrast: {contrastText}</p>
       <div className="action-buttons">
         <button>Update</button>
-        <button onClick={onDeleteColor} id={id}>
+        <button onClick={onShowConfirmation} id={id}>
           Delete
         </button>
+        {children}
       </div>
     </div>
   );
