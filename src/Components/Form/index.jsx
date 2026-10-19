@@ -1,10 +1,21 @@
-export default function index() {
-  function handleInput(e) {
-    console.log(e.target.value);
+import { useState } from "react";
+
+export default function Index() {
+  const [color, setColor] = useState(0);
+  const [contrast, setContrast] = useState(0);
+
+  function handleColor(e) {
+    setColor(e.target.value);
+  }
+  function handleContrast(e) {
+    setContrast(e.target.value);
   }
   function handleForm(e) {
     e.preventDefault();
   }
+
+  console.log(color);
+
   return (
     <>
       <form className="theme-form" onSubmit={handleForm}>
@@ -18,11 +29,19 @@ export default function index() {
           <label htmlFor="hexa">Hexa</label>
           <div className="form-input">
             <div className="input-group">
-              <input type="text" name="hexa" id="hexa" onChange={handleInput} />
+              <input
+                type="text"
+                name="hexa"
+                id="hexa"
+                value={color}
+                onChange={handleColor}
+              />
               <input
                 type="color"
                 name="hexa-color"
                 id="hexa-color"
+                value={color}
+                onChange={handleColor}
                 style={{ width: "30%" }}
               />
             </div>
@@ -32,11 +51,19 @@ export default function index() {
           <label htmlFor="contract_text">Contract Text</label>
           <div className="form-input">
             <div className="input-group">
-              <input type="text" name="contract_text" id="contract_text" />
+              <input
+                type="text"
+                name="contract_text"
+                id="contract_text"
+                value={contrast}
+                onChange={handleContrast}
+              />
               <input
                 type="color"
                 name="text-color"
                 id="text_color"
+                value={contrast}
+                onChange={handleContrast}
                 style={{ width: "30%" }}
               />
             </div>
