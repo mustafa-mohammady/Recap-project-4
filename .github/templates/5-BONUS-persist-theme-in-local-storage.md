@@ -1,4 +1,4 @@
-# 5: Persist Themes in Local Storage
+# 5: BONUS - Persist Themes in Local Storage
 
 ## Value Proposition
 
@@ -17,4 +17,4 @@ https://github.com/neuefische/web-react-recap-project/assets/93415777/dae96208-6
 
 ### Tasks
 
-- Install use-local-storage-state package from npm `npm i use-local-storage-state` and use it
+- Install use-local-storage-state package from npm `npm i use-local-storage-state` and use it ([React hook that persist data in localStorage](https://github.com/astoilkov/use-local-storage-state))
