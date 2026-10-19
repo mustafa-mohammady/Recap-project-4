@@ -61,3 +61,16 @@ label {
   display: flex;
   gap: 5px;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.actions-button-container {
+  display: flex;
+  gap: 5px;
+}
+.actions-button-container > button {
+  height: 30px;
+  width: 60px;
+}
