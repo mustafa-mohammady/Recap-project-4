@@ -13,6 +13,13 @@ function App() {
     setColor([{ id, role, hex, contrastText }, ...colors]);
   }
 
+  function handleDeleteColor(e) {
+    e.preventDefault();
+    let color_id = e.target.id;
+    const NEW_COLOR = colors.filter((newColor) => newColor.id !== color_id);
+    setColor(NEW_COLOR);
+  }
+
   return (
     <>
       <main>
@@ -23,6 +30,8 @@ function App() {
               role={color.role}
               hex={color.hex}
               contrastText={color.contrastText}
+              onDeleteColor={handleDeleteColor}
+              id={color.id}
             />
           </Fragment>
         ))}
