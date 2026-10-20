@@ -6,6 +6,7 @@ export default function Color({
   hex,
   contrastText,
   onShowConfirmation,
+  onShowUpdateForm,
   id,
   children,
 }) {
@@ -18,8 +19,12 @@ export default function Color({
       <p>Role: {role}</p>
       <p>Contrast: {contrastText}</p>
       <div className="action-buttons">
-        {!children && (
-          <ActionButtons onShowConfirmation={onShowConfirmation} id={id} />
+        {!children[0] && !children[1] && (
+          <ActionButtons
+            onShowConfirmation={onShowConfirmation}
+            id={id}
+            onShowUpdateForm={onShowUpdateForm}
+          />
         )}
         {children}
       </div>
