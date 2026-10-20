@@ -12,15 +12,11 @@ function App() {
   const [delete_id, setDeleteID] = useState(null);
   const [edit_id, setEditID] = useState(null);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
-
   function handleAddColor(props) {
     const { id = v4(), role, hex, contrastText } = props;
     setColor([{ id, role, hex, contrastText }, ...colors]);
   }
 
-  function handleUpdateColor() {
-    console.log("OOOK!");
-  }
   function handleDeleteColor(e) {
     e.preventDefault();
     let color_id = e.target.id;
@@ -42,6 +38,16 @@ function App() {
     e.preventDefault();
     setEditID(e.target.id);
     setShowUpdateForm(true);
+  }
+
+  function handleUpdateColor(props) {
+    const { role, hex, contrastText } = props;
+    console.log("Hello", edit_id);
+    const newColors = colors.map((color) =>
+      color.id == edit_id ? { id: edit_id, role, hex, contrastText } : color,
+    );
+    setColor(newColors);
+    setShowUpdateForm(false);
   }
 
   return (
@@ -68,7 +74,12 @@ function App() {
                   />
                 )}
                 {showUpdateForm && edit_id === color.id && (
-                  <Form onUpdateColor={handleUpdateColor} buttonText="Update" />
+                  <Form
+                    onUpdateColor={handleUpdateColor}
+                    buttonText="Update"
+                    cardData={color}
+                    id={color.id}
+                  />
                 )}
               </Color>
             </Fragment>

@@ -1,10 +1,15 @@
 import { useState } from "react";
 
-export default function Index({ onAddColor, onUpdateColor, buttonText }) {
+export default function Index({
+  onAddColor,
+  cardData,
+  buttonText,
+  onUpdateColor,
+}) {
   const [formData, setFormData] = useState({
-    role: "Primary Color",
-    hex: "#ffffff",
-    contrastText: "#dddddd",
+    role: cardData ? cardData.role : "Primary Color",
+    hex: cardData ? cardData.hex : "#ffffff",
+    contrastText: cardData ? cardData.contrastText : "#dddddd",
   });
 
   function handleForm(e) {
@@ -13,10 +18,19 @@ export default function Index({ onAddColor, onUpdateColor, buttonText }) {
     const form_values = Object.fromEntries(form);
     onAddColor(form_values);
   }
+  function handleUpdate(e) {
+    e.preventDefault();
+    const updateForm = new FormData(e.target);
+    const updateFormValues = Object.fromEntries(updateForm);
+    onUpdateColor(updateFormValues);
+  }
 
   return (
     <>
-      <form className="theme-form" onSubmit={handleForm}>
+      <form
+        className="theme-form"
+        onSubmit={buttonText == "add" ? handleForm : handleUpdate}
+      >
         <div className="form-element">
           <label htmlFor="role">Role</label>
           <div className="form-input">
