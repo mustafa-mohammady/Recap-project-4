@@ -53,7 +53,7 @@ function App() {
   return (
     <>
       <main>
-        <Form onAddColor={handleAddColor} buttonText="Add" />
+        <Form onAddColor={handleAddColor} mode="add" />
 
         {colors.length > 0 ? (
           colors.map((color) => (
@@ -76,7 +76,7 @@ function App() {
                 {showUpdateForm && edit_id === color.id && (
                   <Form
                     onUpdateColor={handleUpdateColor}
-                    buttonText="Update"
+                    mode="edit"
                     cardData={color}
                     id={color.id}
                   />

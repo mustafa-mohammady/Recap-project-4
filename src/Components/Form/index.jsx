@@ -1,11 +1,6 @@
 import { useState } from "react";
 
-export default function Index({
-  onAddColor,
-  cardData,
-  buttonText,
-  onUpdateColor,
-}) {
+export default function Index({ onAddColor, cardData, mode, onUpdateColor }) {
   const [formData, setFormData] = useState({
     role: cardData ? cardData.role : "Primary Color",
     hex: cardData ? cardData.hex : "#ffffff",
@@ -29,7 +24,7 @@ export default function Index({
     <>
       <form
         className="theme-form"
-        onSubmit={buttonText == "add" ? handleForm : handleUpdate}
+        onSubmit={mode === "add" ? handleForm : handleUpdate}
       >
         <div className="form-element">
           <label htmlFor="role">Role</label>
@@ -98,7 +93,7 @@ export default function Index({
           </div>
         </div>
         <div className="form-element">
-          <button className="btn">{buttonText}</button>
+          <button className="btn">{mode === "add" ? "Add" : "Update"}</button>
         </div>
       </form>
     </>
