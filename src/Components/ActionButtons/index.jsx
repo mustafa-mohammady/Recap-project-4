@@ -1,7 +1,9 @@
-export default function Index({ onShowConfirmation, id }) {
+export default function Index({ onShowConfirmation, id, onShowUpdateForm }) {
   return (
     <div className="action-buttons">
-      <button>Update</button>
+      <button onClick={onShowUpdateForm} id={id}>
+        Update
+      </button>
       <button onClick={onShowConfirmation} id={id}>
         Delete
       </button>

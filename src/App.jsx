@@ -10,11 +10,17 @@ function App() {
   const [colors, setColor] = useState(initialColors);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [delete_id, setDeleteID] = useState(null);
+  const [edit_id, setEditID] = useState(null);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+
   function handleAddColor(props) {
     const { id = v4(), role, hex, contrastText } = props;
     setColor([{ id, role, hex, contrastText }, ...colors]);
   }
 
+  function handleUpdateColor() {
+    console.log("OOOK!");
+  }
   function handleDeleteColor(e) {
     e.preventDefault();
     let color_id = e.target.id;
@@ -32,10 +38,16 @@ function App() {
     setShowConfirmation(false);
   }
 
+  function handleShowUpdateForm(e) {
+    e.preventDefault();
+    setEditID(e.target.id);
+    setShowUpdateForm(true);
+  }
+
   return (
     <>
       <main>
-        <Form onAddColor={handleAddColor} />
+        <Form onAddColor={handleAddColor} buttonText="Add" />
 
         {colors.length > 0 ? (
           colors.map((color) => (
@@ -46,6 +58,7 @@ function App() {
                 contrastText={color.contrastText}
                 id={color.id}
                 onShowConfirmation={handleConfirmation}
+                onShowUpdateForm={handleShowUpdateForm}
               >
                 {showConfirmation && color.id === delete_id && (
                   <Confirmation
@@ -53,6 +66,9 @@ function App() {
                     onCancel={handleCancelConfirmation}
                     id={color.id}
                   />
+                )}
+                {showUpdateForm && edit_id === color.id && (
+                  <Form onUpdateColor={handleUpdateColor} buttonText="Update" />
                 )}
               </Color>
             </Fragment>

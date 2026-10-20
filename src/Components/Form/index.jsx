@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Index({ onAddColor }) {
+export default function Index({ onAddColor, onUpdateColor, buttonText }) {
   const [formData, setFormData] = useState({
     role: "Primary Color",
     hex: "#ffffff",
@@ -84,7 +84,7 @@ export default function Index({ onAddColor }) {
           </div>
         </div>
         <div className="form-element">
-          <button className="btn">Add</button>
+          <button className="btn">{buttonText}</button>
         </div>
       </form>
     </>
