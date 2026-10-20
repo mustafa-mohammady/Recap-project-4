@@ -9,3 +9,18 @@
   background: black;
   color: white;
 }
+
+.hex-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copy-button {
+  display: inline-flex;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}

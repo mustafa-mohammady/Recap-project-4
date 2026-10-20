@@ -1,6 +1,7 @@
 import ActionButtons from "../ActionButtons";
 import "../Color/Color.css";
 import ContrastChecker from "./ContrastChecker";
+import CopyToClipboard from "../CopyToClipBoard";
 
 export default function Color({
   role,
@@ -16,7 +17,10 @@ export default function Color({
       className="card"
       style={{ backgroundColor: `${hex}`, color: `${contrastText}` }}
     >
-      <h4>{hex}</h4>
+      <h5 className="color-card-headline hex-label">
+        {hex}
+        <CopyToClipboard hex={hex} />
+      </h5>
       <p>Role: {role}</p>
       <p>Contrast: {contrastText}</p>
       <ContrastChecker hex={hex} contrastText={contrastText} />
