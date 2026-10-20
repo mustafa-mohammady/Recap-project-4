@@ -5,9 +5,12 @@ import Form from "./Components/Form";
 import Confirmation from "./Components/Confirmation";
 import { v4 } from "uuid";
 import "./App.css";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-  const [colors, setColor] = useState(initialColors);
+  const [colors, setColor] = useLocalStorageState("colors", {
+    defaultValue: initialColors,
+  });
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [delete_id, setDeleteID] = useState(null);
   const [edit_id, setEditID] = useState(null);
