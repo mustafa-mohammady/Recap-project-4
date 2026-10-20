@@ -15,6 +15,7 @@ function App() {
   const [delete_id, setDeleteID] = useState(null);
   const [edit_id, setEditID] = useState(null);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
+
   function handleAddColor(props) {
     const { id = v4(), role, hex, contrastText } = props;
     setColor([{ id, role, hex, contrastText }, ...colors]);

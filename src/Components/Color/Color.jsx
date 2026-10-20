@@ -1,5 +1,6 @@
 import ActionButtons from "../ActionButtons";
 import "../Color/Color.css";
+import ContrastChecker from "./ContrastChecker";
 
 export default function Color({
   role,
@@ -18,6 +19,7 @@ export default function Color({
       <h4>{hex}</h4>
       <p>Role: {role}</p>
       <p>Contrast: {contrastText}</p>
+      <ContrastChecker hex={hex} contrastText={contrastText} />
       <div className="action-buttons">
         {!children[0] && !children[1] && (
           <ActionButtons
