@@ -112,7 +112,9 @@ function App() {
   function handleDeleteTheme(e) {
     const theme_id = e.target.id;
     const remain_theme = themes.filter((theme) => theme.id !== theme_id);
+    const remain_colors = colors.filter((color) => color.theme_id !== theme_id);
     setThemes(remain_theme);
+    setColor(remain_colors);
     setActiveTheme("th01");
     setShowDeleteTheme(false);
   }
