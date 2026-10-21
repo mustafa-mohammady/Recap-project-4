@@ -5,6 +5,7 @@ export default function Index({ onAddColor, cardData, mode, onUpdateColor }) {
     role: cardData ? cardData.role : "Primary Color",
     hex: cardData ? cardData.hex : "#ffffff",
     contrastText: cardData ? cardData.contrastText : "#dddddd",
+    theme_id: cardData ? cardData.theme_id : "th01",
   });
 
   function handleForm(e) {
