@@ -10,6 +10,8 @@ import ThemeForm from "./Components/Form/ThemeForm";
 import useLocalStorageState from "use-local-storage-state";
 import { v4 } from "uuid";
 import "./App.css";
+import ThemeActionButtons from "./Components/ActionButtons/ThemeActionButtons";
+import ThemeDeleteConfirmation from "./Components/Confirmation/ThemeDeleteConfirmation";
 
 function App() {
   const [activeTheme, setActiveTheme] = useState("th01");
@@ -25,6 +27,7 @@ function App() {
   const [delete_id, setDeleteID] = useState(null);
   const [edit_id, setEditID] = useState(null);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [showDeleteTheme, setShowDeleteTheme] = useState(false);
   const [showThemeForm, setShowThemeForm] = useState({
     themeName: themes.find((e) => e.id === activeTheme).name,
     visible: false,
@@ -106,11 +109,20 @@ function App() {
     setShowThemeForm(false);
   }
 
+  function handleDeleteTheme(e) {
+    const theme_id = e.target.id;
+    const remain_theme = themes.filter((theme) => theme.id !== theme_id);
+    setThemes(remain_theme);
+    setActiveTheme("th01");
+    setShowDeleteTheme(false);
+  }
+
   return (
     <>
       <main>
         <h1>Theme Creator</h1>
-        {!showThemeForm.visible && (
+
+        {!showThemeForm.visible && !showDeleteTheme && (
           <div className="theme-container">
             <DropDown
               onChangeTheme={(e) => {
@@ -127,18 +139,14 @@ function App() {
                 <Options key={theme.id} themesList={theme} />
               ))}
             </DropDown>
-            <button
-              onClick={() => {
+            <ThemeActionButtons
+              showInsertForm={() => {
                 setShowThemeForm({
                   visible: true,
                   action: "add",
                 });
               }}
-            >
-              Add
-            </button>
-            <button
-              onClick={() => {
+              showEditForm={() => {
                 setShowThemeForm({
                   visible: true,
                   action: "edit",
@@ -146,19 +154,27 @@ function App() {
                     .name,
                 });
               }}
-            >
-              Edit
-            </button>
-            <button>Delete</button>
+              activeTheme={activeTheme}
+              showDeleteThemeConfirmation={() => {
+                setShowDeleteTheme(true);
+              }}
+            />
           </div>
         )}
         {showThemeForm.visible && (
           <ThemeForm
             themeName={showThemeForm.themeName}
             action={showThemeForm.action}
-            onhandleHideThemeForm={handleHideThemeForm}
+            onHandleHideThemeForm={handleHideThemeForm}
             onHandleUpdateTheme={handleUpdateTheme}
             onHandleAddTheme={handleAddTheme}
+          />
+        )}
+        {showDeleteTheme && (
+          <ThemeDeleteConfirmation
+            theme_id={activeTheme}
+            onDeleteTheme={handleDeleteTheme}
+            closeConfirmation={() => setShowDeleteTheme(false)}
           />
         )}
         <Form onAddColor={handleAddColor} mode="add" />

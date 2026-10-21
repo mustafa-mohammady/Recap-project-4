@@ -74,7 +74,11 @@ label {
   height: 30px;
   width: 60px;
 }
+select {
+  height: 30px;
+}
 
 .theme-container {
   display: flex;
+  gap: 5px;
 }
