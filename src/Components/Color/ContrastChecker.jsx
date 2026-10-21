@@ -8,12 +8,23 @@ export default function ContrastChecker({ hex, contrastText }) {
     fetcher,
   );
 
+  let result = "";
+  if (data) {
+    if (data.AAA === "pass") {
+      result = "Yup";
+    } else if (data.AA === "pass") {
+      result = "Kinda";
+    } else {
+      result = "Nope";
+    }
+  }
+
   if (error) return <h3>{error.message}</h3>;
   if (isLoading) return <h3>Loading ....</h3>;
 
   return (
     <div>
-      <span style={{ color: "black" }}>Overall Contrast Score: {data.AA}</span>
+      <span style={{ color: "black" }}>Overall Contrast Score: {result}</span>
     </div>
   );
 }

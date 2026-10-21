@@ -3,8 +3,8 @@ import { useState } from "react";
 export default function Index({ onAddColor, cardData, mode, onUpdateColor }) {
   const [formData, setFormData] = useState({
     role: cardData ? cardData.role : "Primary Color",
-    hex: cardData ? cardData.hex : "#ffffff",
-    contrastText: cardData ? cardData.contrastText : "#dddddd",
+    hex: cardData ? cardData.hex : "#2E7D6B",
+    contrastText: cardData ? cardData.contrastText : "#FFFFFF",
     theme_id: cardData ? cardData.theme_id : "th01",
   });
 

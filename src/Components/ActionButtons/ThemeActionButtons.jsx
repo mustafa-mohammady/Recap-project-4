@@ -5,7 +5,7 @@ function ThemeActionButtons({
   showDeleteThemeConfirmation,
 }) {
   return (
-    <div>
+    <div style={{ display: "flex", gap: "5px" }}>
       <button onClick={showInsertForm}>Add</button>
       <button disabled={activeTheme === "th01"} onClick={showEditForm}>
         Edit

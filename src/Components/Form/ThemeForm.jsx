@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function ThemeForm({
-  themeName,
+  themeName = "",
   action,
   onHandleHideThemeForm,
   onHandleUpdateTheme,
