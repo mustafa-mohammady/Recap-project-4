@@ -32,7 +32,7 @@ export const initialColors = [
     role: "secondary dark",
     hex: "#3949AB",
     contrastText: "#FFFFFF",
-    theme_id: 1,
+    theme_id: "th02",
   }, // Darker indigo blue
   {
     id: "c6",

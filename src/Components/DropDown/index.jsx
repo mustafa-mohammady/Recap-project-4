@@ -1,7 +1,9 @@
-export default function Index({ children, onChangeTheme }) {
+export default function Index({ children, onChangeTheme, activeOption }) {
   return (
     <div>
-      <select onChange={onChangeTheme}>{children}</select>
+      <select onChange={onChangeTheme} value={activeOption}>
+        {children}
+      </select>
     </div>
   );
 }

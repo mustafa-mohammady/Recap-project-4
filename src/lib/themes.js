@@ -5,6 +5,6 @@ export const initialThemes = [
   },
   {
     id: "th02",
-    name: "Theme2",
+    name: "Theme 2",
   },
 ];
